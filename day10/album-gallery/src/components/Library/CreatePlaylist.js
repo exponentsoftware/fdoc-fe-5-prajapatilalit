@@ -41,20 +41,18 @@ class createPlaylist extends Component {
             <h2>Add Play List Here</h2>
             <input
               type="text"
-              name="playlistTitle"
+              name="pname"
               placeholder="Add Playlist Title"
-              onChange={(e) => this.setState({ playlistTitle: e.target.value })}
-              value={this.state.playlistTitle}
+              onChange={(e) => this.setState({ pname: e.target.value })}
+              value={this.state.pname}
               required={true}
             />
             <input
               type="text"
-              name="playlistDiscription"
-              placeholder="Add Discription"
-              onChange={(e) =>
-                this.setState({ playlistDiscription: e.target.value })
-              }
-              value={this.state.playlistDiscription}
+              name="createdBy"
+              placeholder="Add created by"
+              onChange={(e) => this.setState({ createdBy: e.target.value })}
+              value={this.state.createdBy}
             />
             <input
               type="file"
