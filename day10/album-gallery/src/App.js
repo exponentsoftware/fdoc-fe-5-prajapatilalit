@@ -7,7 +7,6 @@ import albumList from "./components/Albums/AlbumData";
 import Navbar from "./components/Navbar";
 import Songs from "./components/Songs/Songs";
 import CreatePlaylist from "./components/Playlist/CreatePlaylist";
-import playlist from "./components/Playlist/PlaylistData";
 
 class App extends Component {
   state = {
