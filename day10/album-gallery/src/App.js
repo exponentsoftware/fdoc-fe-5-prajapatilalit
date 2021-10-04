@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import AddAlbum from "./components/Albums/AddAlbum";
 import Albums from "./components/Albums/Albums";
 import albumList from "./components/Albums/AlbumData";
 import Navbar from "./components/Navbar";
 import Songs from "./components/Songs/Songs";
+import CreatePlaylist from "./components/Playlist/CreatePlaylist";
+import playlist from "./components/Playlist/PlaylistData";
 
 class App extends Component {
   state = {
@@ -36,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <BrowserRouter>
+        <Router>
           <Navbar
             onSearch={this.searchAlbum}
             searchLists={this.state.searchList}
@@ -45,6 +47,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/createPlaylist">
+              <CreatePlaylist />
             </Route>
             <Route exact path="/addalbum">
               <div className="container">
@@ -72,7 +77,7 @@ class App extends Component {
               <Songs albums={this.state.albums} />
             </Route>
           </Switch>
-        </BrowserRouter>
+        </Router>
       </>
     );
   }

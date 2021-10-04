@@ -40,7 +40,7 @@ const Songs = ({ albums }) => {
           </thead>
           <tbody>
             {songs.map((song, index) => (
-              <tr className="table-body">
+              <tr className="table-body" key={song.id}>
                 <td>{index}</td>
                 <td>
                   <div className="song-item">
