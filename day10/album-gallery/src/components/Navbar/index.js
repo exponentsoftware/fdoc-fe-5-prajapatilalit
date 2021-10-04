@@ -31,6 +31,9 @@ const Navbar = (props) => {
               <Link to="/CreatePlaylist">
                 <li>Create playlist</li>
               </Link>
+              <Link to="/library">
+                <li>Library</li>
+              </Link>
               <Link to="/">
                 <li>Home</li>
               </Link>

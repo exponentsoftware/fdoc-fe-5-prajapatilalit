@@ -7,11 +7,15 @@ import albumList from "./components/Albums/AlbumData";
 import Navbar from "./components/Navbar";
 import Songs from "./components/Songs/Songs";
 import CreatePlaylist from "./components/Playlist/CreatePlaylist";
+import playlistItems from "./components/Library/PlaylistData";
+import Library from "./components/Library/Library";
+import PlaylistItem from "./components/Library/PlaylistItem";
 
 class App extends Component {
   state = {
     albums: albumList,
     searchList: [],
+    playlists: playlistItems,
   };
 
   addAlbum = (albumItem) => {
@@ -34,6 +38,18 @@ class App extends Component {
     );
     this.setState({ searchList: searchAlbum });
   };
+
+  addPlaylist = (playlistItem) => {
+    const newPlayList = [playlistItem, ...this.state.playlists];
+    return this.setState({ playlists: newPlayList });
+  };
+
+  removePlaylist = (id) => {
+    const removeArr = [...this.state.playlists].filter((playlistItem) => {
+      return playlistItem.id !== id;
+    });
+    this.setState({ playlists: removeArr });
+  };
   render() {
     return (
       <>
@@ -47,9 +63,7 @@ class App extends Component {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/createPlaylist">
-              <CreatePlaylist />
-            </Route>
+
             <Route exact path="/addalbum">
               <div className="container">
                 <div className="header">
@@ -74,6 +88,21 @@ class App extends Component {
             </Route>
             <Route exact path="/albums/:id">
               <Songs albums={this.state.albums} />
+            </Route>
+            <Route exact path="/library">
+              <Library
+                playlists={this.state.playlists}
+                onRemovePlaylist={this.removePlaylist}
+              />
+            </Route>
+            <Route exact path="/library/:id">
+              <PlaylistItem playlists={this.state.playlists} />
+            </Route>
+            <Route exact path="/createPlaylist">
+              <CreatePlaylist
+                onCreate={this.addPlaylist}
+                playlists={this.state.playlists}
+              />
             </Route>
           </Switch>
         </Router>

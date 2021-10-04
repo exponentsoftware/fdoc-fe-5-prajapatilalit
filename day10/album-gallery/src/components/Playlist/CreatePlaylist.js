@@ -6,13 +6,6 @@ class createPlaylist extends Component {
     playlistDiscription: "",
   };
 
-  fileSelectHandleChange = (e) => {
-    const currFile = e.target.files[0];
-    this.setState({
-      albumCover: URL.createObjectURL(currFile),
-    });
-  };
-
   handleSubmit = (e) => {
     e.preventDefault();
     const { playlistTitle, playlistDiscription } = this.state;
@@ -22,13 +15,12 @@ class createPlaylist extends Component {
       playlistDiscription,
     };
 
-    const playlist = this.props.onAddPlaylist(newPlaylist);
+    const playlist = this.props.onCreate(newPlaylist);
 
     this.setState({
       playlistTitle: "",
       playlistDiscription: "",
-
-      library: playlist,
+      playlist: playlist,
     });
   };
 

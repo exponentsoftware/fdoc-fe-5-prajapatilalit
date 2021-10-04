@@ -1,10 +1,13 @@
 import React from "react";
 import Playlists from "./Playlists";
 
-const Library = () => {
+const Library = ({ playlists, onRemovePlaylist }) => {
   return (
     <div>
-      <Playlists />
+      <Playlists
+        playlistItems={playlists}
+        onDeletePlaylist={onRemovePlaylist}
+      />
     </div>
   );
 };
