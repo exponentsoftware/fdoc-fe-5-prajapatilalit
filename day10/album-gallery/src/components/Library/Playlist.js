@@ -7,16 +7,20 @@ const Playlist = (props) => {
       <div className="album">
         <div className="album_info">
           <Link to={`/library/${props.id}`}>
-            <img src={props.pimage} alt="Album-cover" className="album_img" />
+            <img
+              src={props.pimage}
+              alt="playlist-cover"
+              className="album_img"
+            />
             <p className="album-title">{props.pname}</p>
             <span className="album_artist">{props.createdBy}</span>
-            <button
-              className="btn mt"
-              onClick={() => props.onRemovePlaylist(props.id)}
-            >
-              Delete
-            </button>
           </Link>
+          <button
+            className="btn mt"
+            onClick={() => props.onRemovePlaylist(props.id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </>

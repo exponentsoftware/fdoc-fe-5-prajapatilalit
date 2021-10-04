@@ -2,7 +2,7 @@ import React from "react";
 
 import songs from "../Songs/index";
 
-const PlaylistItem = () => {
+const PlaylistOne = () => {
   return (
     <div>
       {/* {
@@ -58,4 +58,4 @@ const PlaylistItem = () => {
   );
 };
 
-export default PlaylistItem;
+export default PlaylistOne;

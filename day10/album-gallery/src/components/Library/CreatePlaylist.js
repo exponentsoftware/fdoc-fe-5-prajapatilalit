@@ -2,24 +2,33 @@ import React, { Component } from "react";
 
 class createPlaylist extends Component {
   state = {
-    playlistTitle: "",
-    playlistDiscription: "",
+    pname: "",
+    createdBy: "",
+    pimage: null,
   };
 
+  fileSelectHandleChange = (e) => {
+    const currFile = e.target.files[0];
+    this.setState({
+      pimage: URL.createObjectURL(currFile),
+    });
+  };
   handleSubmit = (e) => {
     e.preventDefault();
-    const { playlistTitle, playlistDiscription } = this.state;
+    const { pimage, pname, createdBy } = this.state;
     const newPlaylist = {
       id: new Date().getTime().toString(),
-      playlistTitle,
-      playlistDiscription,
+      pname: pname,
+      createdBy: createdBy,
+      pimage: pimage,
     };
 
     const playlist = this.props.onCreate(newPlaylist);
 
     this.setState({
-      playlistTitle: "",
-      playlistDiscription: "",
+      pname: "",
+      createdBy: "",
+      pimage: null,
       playlist: playlist,
     });
   };
@@ -46,6 +55,13 @@ class createPlaylist extends Component {
                 this.setState({ playlistDiscription: e.target.value })
               }
               value={this.state.playlistDiscription}
+            />
+            <input
+              type="file"
+              accept="image/*"
+              name="playlistCover"
+              onChange={this.fileSelectHandleChange}
+              required={true}
             />
 
             <button className="btn">Create</button>

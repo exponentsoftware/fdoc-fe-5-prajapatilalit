@@ -6,10 +6,10 @@ import Albums from "./components/Albums/Albums";
 import albumList from "./components/Albums/AlbumData";
 import Navbar from "./components/Navbar";
 import Songs from "./components/Songs/Songs";
-import CreatePlaylist from "./components/Playlist/CreatePlaylist";
+import CreatePlaylist from "./components/Library/CreatePlaylist";
 import playlistItems from "./components/Library/PlaylistData";
 import Library from "./components/Library/Library";
-import PlaylistItem from "./components/Library/PlaylistItem";
+import PlaylistOne from "./components/Library/PlaylistOne";
 
 class App extends Component {
   state = {
@@ -45,8 +45,8 @@ class App extends Component {
   };
 
   removePlaylist = (id) => {
-    const removeArr = [...this.state.playlists].filter((playlistItem) => {
-      return playlistItem.id !== id;
+    const removeArr = [...this.state.playlists].filter((pl) => {
+      return pl.id !== id;
     });
     this.setState({ playlists: removeArr });
   };
@@ -96,7 +96,7 @@ class App extends Component {
               />
             </Route>
             <Route exact path="/library/:id">
-              <PlaylistItem playlists={this.state.playlists} />
+              <PlaylistOne playlists={this.state.playlists} />
             </Route>
             <Route exact path="/createPlaylist">
               <CreatePlaylist
