@@ -1,19 +1,11 @@
 import React from "react";
-import { useParams } from "react-router";
-import songs from "./index";
 
-const Songs = ({ albums }) => {
-  // let albumItem = props.albums;
+import songs from "../Songs/index";
 
-  // const id = props.albums.id;
-  let { id } = useParams();
-  // let albumItem = albums.find((item) => item.id === id);
-  let albumItem = albums[parseInt(id, 10)];
-
-  console.log(albumItem);
+const PlaylistItem = () => {
   return (
     <div>
-      {
+      {/* {
         <div className="album">
           <img
             src={albumItem.albumCover}
@@ -23,7 +15,7 @@ const Songs = ({ albums }) => {
           <p className="album-title">{albumItem.album}</p>
           <span className="album_artist">{albumItem.artist}</span>
         </div>
-      }
+      } */}
 
       <div>
         <table>
@@ -31,32 +23,32 @@ const Songs = ({ albums }) => {
             <tr className="table-hading">
               <th>#</th>
               <th>TITLE</th>
-              <th>PLAYS</th>
               <th>ALBUM</th>
+              <th>DateAdded</th>
               <th>
                 <i class="far fa-clock"></i>
               </th>
             </tr>
           </thead>
           <tbody>
-            {songs.map((song, index) => (
-              <tr className="table-body" key={song.id}>
+            {songs.map((pSong, index) => (
+              <tr className="table-body" key={pSong.id}>
                 <td>{index}</td>
                 <td>
-                  <div className="song-item">
+                  <div className="pSong-item">
                     <div>
-                      <img src={song.simage} alt="song-cover" />
+                      <img src={pSong.simage} alt="pSong-cover" />
                     </div>
 
                     <div>
-                      <h4>{song.sname}</h4>
-                      <p>{song.artist}</p>
+                      <h4>{pSong.sname}</h4>
+                      <p>{pSong.artist}</p>
                     </div>
                   </div>
                 </td>
-                <td>{song.plays}</td>
-                <td>{song.albumName}</td>
-                <td>{song.duration}</td>
+                <td>{pSong.albumName}</td>
+                <td>{pSong.hour}</td>
+                <td>{pSong.duration}</td>
               </tr>
             ))}
           </tbody>
@@ -66,4 +58,4 @@ const Songs = ({ albums }) => {
   );
 };
 
-export default Songs;
+export default PlaylistItem;

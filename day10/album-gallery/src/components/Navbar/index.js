@@ -28,6 +28,12 @@ const Navbar = (props) => {
               <Link to="/albums">
                 <li>Albums</li>
               </Link>
+              <Link to="/CreatePlaylist">
+                <li>Create playlist</li>
+              </Link>
+              <Link to="/library">
+                <li>Library</li>
+              </Link>
               <Link to="/">
                 <li>Home</li>
               </Link>
